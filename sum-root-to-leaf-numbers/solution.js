@@ -13,24 +13,18 @@
 
 var sumNumbers = function (root) {
   const rec = (root, temp) => {
-      console.log("------")
       if (!root.left && !root.right) {
-          console.log(temp)
-          console.log("111")
           return parseInt(temp);
       }
-      if (root.left && (root.left.val != null) && !root.right) {
-          console.log("222")
+      if (root.left && !root.right) {
           let left = temp + "" + root.left.val
           return parseInt(rec(root.left, left))
       }
-      if (!root.left && root.right && (root.right.val != null)) {
-          console.log("333")
+      if (!root.left && root.right)  {
           let right = temp + "" + root.right.val
-          return parseInt(rec(root.right, right) + temp)
+          return parseInt(rec(root.right, right) )
       }
       if (root.left && root.right) {
-          console.log("444")
           let right = temp + "" + root.right.val
           let left = temp + "" + root.left.val
           return parseInt(rec(root.right, right) + rec(root.left, left))
@@ -39,6 +33,3 @@ var sumNumbers = function (root) {
   const sum = rec(root, root.val.toString())
   return sum
 }
-
-
-
